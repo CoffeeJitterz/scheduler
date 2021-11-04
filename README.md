@@ -1,23 +1,26 @@
-# Interview Scheduler
+# Scheduler Project
 
-## Setup
+Scheduler is a full stack web application built with react.
 
-Install dependencies with `npm install`.
+## Final Product
 
-## Running Webpack Development Server
+!["screenshot description"](https://github.com/CoffeeJitterz/tinyapp/blob/master/docs/create_urls_page.png?raw=true)
 
-```sh
-npm start
-```
+!["screenshot description"](https://github.com/CoffeeJitterz/tinyapp/blob/master/docs/registration_page.png?raw=true)
 
-## Running Jest Test Framework
+!["screenshot description"](https://github.com/CoffeeJitterz/tinyapp/blob/master/docs/urls_page.png?raw=true)
 
-```sh
-npm test
-```
+## Dependencies
 
-## Running Storybook Visual Testbed
+- Node.js
+- Express
+- EJS
+- bcrypt
+- body-parser
+- cookie-session
 
-```sh
-npm run storybook
+## Getting Started
+
+- Install all dependencies (using the `npm install` command).
+- Run the development web server using the `node express_server.js` command.
 ```
