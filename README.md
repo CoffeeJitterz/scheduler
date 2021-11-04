@@ -1,26 +1,26 @@
 # Scheduler Project
 
-Scheduler is a full stack web application built with react.
+Scheduler is a full stack web application built with react and axios and 
+tested with storybook and cypress.
 
 ## Final Product
 
-!["screenshot description"](https://github.com/CoffeeJitterz/tinyapp/blob/master/docs/create_urls_page.png?raw=true)
+!["screenshot description"](https://github.com/CoffeeJitterz/scheduler/blob/master/docs/Screen%20Shot%202021-11-04%20at%208.20.01%20AM.png?raw=true)
 
-!["screenshot description"](https://github.com/CoffeeJitterz/tinyapp/blob/master/docs/registration_page.png?raw=true)
+!["screenshot description"](https://github.com/CoffeeJitterz/scheduler/blob/master/docs/Screen%20Shot%202021-11-04%20at%208.20.15%20AM.png?raw=true)
 
-!["screenshot description"](https://github.com/CoffeeJitterz/tinyapp/blob/master/docs/urls_page.png?raw=true)
+!["screenshot description"](https://github.com/CoffeeJitterz/scheduler/blob/master/docs/Screen%20Shot%202021-11-04%20at%208.20.29%20AM.png?raw=true)
 
 ## Dependencies
 
-- Node.js
-- Express
+- react
+- axios
 - EJS
-- bcrypt
-- body-parser
-- cookie-session
+- babel
+
 
 ## Getting Started
 
 - Install all dependencies (using the `npm install` command).
-- Run the development web server using the `node express_server.js` command.
+- Run the development web server using the `npm start` command.
 ```
