@@ -27,6 +27,10 @@ console.log("PROPS++", props);
       setError("Student name cannot be blank")
       return;
     }
+    if (interviewer === null) {
+      setError("Interviewer name cannot be blank")
+      return;
+    }
 
     setError("");
     onSave(student, interviewer);

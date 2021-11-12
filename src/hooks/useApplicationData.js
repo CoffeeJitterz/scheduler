@@ -27,55 +27,55 @@ export function useApplicationData() {
   }, []);
 
   const bookInterview = (id, interview) => {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview },
-    };
 
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-
-    return new Promise((resolve, reject) => {
-      axios.put(`/api/appointments/${id}`, { interview }).then(() => {
-        axios.get(`/api/days`).then((res) => {
-          console.log("days", res.data);
-          setState({
-            ...state,
-            appointments,
-            days: res.data,
-          });
-            resolve();
-        });
-      });
-    });
+      return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
+        const appointment = {
+          ...state.appointments[id],
+          interview: {...interview},
+        };
+    
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment,
+        };
+          const interviewDay = state.days.findIndex((day) => 
+            day.appointments.includes(id)
+          )
+          console.log(interviewDay)
+  
+          const day = {...state.days[interviewDay], spots: state.days[interviewDay].spots-1}
+          const days = [...state.days]
+          days.splice(interviewDay, 1, day)
+          setState({...state, appointments, days})     
+          console.log(state)         
+        })
+      
+    
   };
 
   const deleteInterview = (id) => {
     console.log("DELETE INTERVIEW", id, state);
-    const appointment = {
-      ...state.appointments[id],
-      interview: null,
-    };
+    return axios.delete(`/api/appointments/${id}`).then((response) => {
+      console.log(state)
+      const appointment = {
+        ...state.appointments[id],
+        interview: null,
+      };
+  
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment,
+      };
+      const interviewDay = state.days.findIndex((day) => 
+      day.appointments.includes(id)
+    )
 
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-    return new Promise((resolve, reject) => {
-      axios.delete(`/api/appointments/${id}`).then(() => {
-        axios.get(`/api/days`).then((res) => {
-          setState({
-            ...state,
-            appointments,
-            days: res.data,
-          });
-            resolve();
-        });
-        console.log("APPOINTMENT", appointment, "DAY", state.days);
+        const day = {...state.days[interviewDay], spots: state.days[interviewDay].spots+1}
+        const days = [...state.days]
+        days.splice(interviewDay, 1, day)
+        setState({...state, appointments, days})     
+        console.log(state)         
       });
-    });
   };
 
   return { state, setDay, deleteInterview, bookInterview };

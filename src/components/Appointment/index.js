@@ -45,14 +45,16 @@ export default function Appointment(props) {
 
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
-  useEffect(() => {
-    if(interview && mode === EMPTY) {
-      transition(SHOW);
-    }
-    if(!interview  && mode === SHOW) {
-      transition(EMPTY);
-    }
-  }, [interview, transition, mode])
+  // useEffect(() => {
+  //   if(interview && mode === EMPTY) {
+  //     transition(SHOW);
+  //   }
+  //   if(!interview  && mode === SHOW) {
+  //     transition(EMPTY);
+  //   }
+  // }, [interview, transition, mode])
+
+console.log(interview);
 
   return (
     <article className="appointment">
@@ -62,7 +64,7 @@ export default function Appointment(props) {
           onAdd={() => transition(CREATE)}
         />
       )}
-      {mode === SHOW && (
+      {mode === SHOW && interview && (
         <Show student={interview.student} interviewer={interview.interviewer} onEdit={() => {transition(EDIT)}} onDelete={() => transition(CONFIRMING)}/>
       )}
       {mode === CREATE && (
