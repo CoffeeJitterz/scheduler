@@ -52,6 +52,32 @@ export function useApplicationData() {
       
     
   };
+  const editInterview = (id, interview) => {
+
+    return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
+      const appointment = {
+        ...state.appointments[id],
+        interview: {...interview},
+      };
+  
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment,
+      };
+        const interviewDay = state.days.findIndex((day) => 
+          day.appointments.includes(id)
+        )
+        console.log(interviewDay)
+
+        const day = {...state.days[interviewDay]}
+        const days = [...state.days]
+        days.splice(interviewDay, 1, day)
+        setState({...state, appointments, days})     
+        console.log(state)         
+      })
+    
+  
+};
 
   const deleteInterview = (id) => {
     console.log("DELETE INTERVIEW", id, state);
@@ -78,5 +104,5 @@ export function useApplicationData() {
       });
   };
 
-  return { state, setDay, deleteInterview, bookInterview };
+  return { state, setDay, deleteInterview, bookInterview, editInterview };
 }

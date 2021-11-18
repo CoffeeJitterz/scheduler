@@ -10,7 +10,7 @@ import { useApplicationData } from "hooks/useApplicationData";
 
 export default function Application(props) {
   console.log(useApplicationData())
-const {state, setDay, deleteInterview, bookInterview} = useApplicationData();
+const {state, setDay, deleteInterview, bookInterview, editInterview} = useApplicationData();
 
   const appointments = getAppointmentsForDay(state, state.day)
   const schedule = appointments.map((appointment) => {
@@ -27,6 +27,7 @@ const {state, setDay, deleteInterview, bookInterview} = useApplicationData();
     interviewers={interviewers}
     bookInterview={bookInterview}
     deleteInterview={deleteInterview}
+    editInterview={editInterview}
     />
       
   })
