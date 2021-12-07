@@ -41,13 +41,11 @@ export function useApplicationData() {
           const interviewDay = state.days.findIndex((day) => 
             day.appointments.includes(id)
           )
-          console.log(interviewDay)
   
           const day = {...state.days[interviewDay], spots: state.days[interviewDay].spots-1}
           const days = [...state.days]
           days.splice(interviewDay, 1, day)
-          setState({...state, appointments, days})     
-          console.log(state)         
+          setState({...state, appointments, days})            
         })
       
     
@@ -67,13 +65,11 @@ export function useApplicationData() {
         const interviewDay = state.days.findIndex((day) => 
           day.appointments.includes(id)
         )
-        console.log(interviewDay)
 
         const day = {...state.days[interviewDay]}
         const days = [...state.days]
         days.splice(interviewDay, 1, day)
-        setState({...state, appointments, days})     
-        console.log(state)         
+        setState({...state, appointments, days})            
       })
     
   

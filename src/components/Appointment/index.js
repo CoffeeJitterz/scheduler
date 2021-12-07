@@ -33,7 +33,7 @@ export default function Appointment(props) {
     .catch(() => transition(ERROR_SAVING, true))
   }
   const edit = (name, interviewer) => {
-
+    
     const interview = {
       student: name,
       interviewer
@@ -70,7 +70,7 @@ export default function Appointment(props) {
         <Form interviewers={interviewers} onSave={save} onCancel={() => transition(EMPTY)}/>
       )}
       {mode === EDIT && (
-        <Form student={interview.student} interviewer={interview.interviewer.id} interviewers={interviewers} onSave={edit} onCancel={() => transition(EMPTY)}/>
+        <Form student={interview.student} interviewer={interview.interviewer.id} interviewers={interviewers} onSave={edit} onCancel={() => transition(SHOW)}/>
       )}
       {mode === SAVING && (
         <Status message={"SAVING"}/>
@@ -82,7 +82,7 @@ export default function Appointment(props) {
         <Confirm message="Delete the appointment?" onConfirm={Delete} onCancel={() => transition(SHOW)}/>
       )}
        {mode === ERROR_DELETING && (
-        <Error message="Could not delete appointment" onClose={back}/>
+        <Error message="Could not delete appointment" onClose={() => transition(SHOW)}/>
       )}
          {mode === ERROR_SAVING && (
         <Error message="Could not save appointment" onClose={back}/>
